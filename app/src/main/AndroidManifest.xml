@@ -67,11 +67,8 @@
             android:label="@string/update_email" />
         <activity
             android:name=".ChangePasswordActivity"
-            android:label="@string/update_password" />
-        <activity
-            android:name=".NavigationDrawerActivity"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme"></activity>
+            android:label="@string/update_password" >
+    </activity>
     </application>
 
 </manifest>
