@@ -163,7 +163,7 @@ public class AddPropertyActivity extends AppCompatActivity
             _wardNoET.setError(null);
         }
 
-        if (municipality.isEmpty() || municipality.length() < 6) {
+        if (municipality.isEmpty() || municipality.length() < 3) {
             _municipalityET.setError("at least 3 characters");
             valid = false;
         } else {

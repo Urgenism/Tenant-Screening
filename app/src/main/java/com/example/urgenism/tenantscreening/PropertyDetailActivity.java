@@ -3,6 +3,7 @@ package com.example.urgenism.tenantscreening;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,15 +18,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.urgenism.tenantscreening.List.PropertyList;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PropertyDetailActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-
+    public static final String country = "Nepal";
 
     private TextView _propertyNameET, _propertyNo, _addressET, _wardNoET,
-            _municipalityET, _districtET, _zoneET, _note, buildingSpinner;
+            _municipalityET, _districtET, _zoneET, _note, buildingSpinner, mapView;
     private Button _editbtn;
 
 
@@ -54,6 +56,7 @@ public class PropertyDetailActivity extends AppCompatActivity
         _districtET = (TextView) findViewById(R.id.editDistrict);
         _zoneET = (TextView) findViewById(R.id.editZone);
         _note = (TextView) findViewById(R.id.editNote);
+        mapView = (TextView) findViewById(R.id.mapView);
 
 
         buildingSpinner = (TextView) findViewById(R.id.spinnerProperty);
@@ -61,7 +64,7 @@ public class PropertyDetailActivity extends AppCompatActivity
         _editbtn = (Button) findViewById(R.id.btn_edit);
 
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         buildingSpinner.setText(intent.getStringExtra(PropertyListViewActivity.BUILDING_TYPE));
         _propertyNameET.setText(intent.getStringExtra(PropertyListViewActivity.PROPERTY_NAME));
         _propertyNo.setText(intent.getStringExtra(PropertyListViewActivity.PROPERTY_NUMBER));
@@ -71,6 +74,20 @@ public class PropertyDetailActivity extends AppCompatActivity
         _districtET.setText(intent.getStringExtra(PropertyListViewActivity.DISTRICT));
         _zoneET.setText(intent.getStringExtra(PropertyListViewActivity.ZONE));
         _note.setText(intent.getStringExtra(PropertyListViewActivity.NOTE));
+
+        final String address = (intent.getStringExtra(PropertyListViewActivity.MUNICIPALITY)+","
+                +intent.getStringExtra(PropertyListViewActivity.DISTRICT)+ ","
+        +intent.getStringExtra(PropertyListViewActivity.ZONE) +","+country);
+
+        mapView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + address);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
 
         _editbtn.setOnClickListener(new View.OnClickListener() {
             @Override
