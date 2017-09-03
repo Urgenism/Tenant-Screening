@@ -51,10 +51,10 @@
             android:name=".EditTenantDetailActivity"
             android:label="@string/update_tenant" />
         <activity
-            android:name=".SelectPropertyA_Activity"
+            android:name=".SelectPropertyForAddingTenant_Activity"
             android:label="@string/select_property" />
         <activity
-            android:name=".SelectPropertyB_Activity"
+            android:name=".SelectPropertyForDisplayingTenants_Activity"
             android:label="@string/select_property" />
         <activity
             android:name=".MyInformationActivity"
@@ -71,7 +71,7 @@
         <activity
             android:name=".NavigationDrawerActivity"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

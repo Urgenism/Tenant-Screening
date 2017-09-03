@@ -1,8 +1,6 @@
 package com.example.urgenism.tenantscreening;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,24 +12,16 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.urgenism.tenantscreening.List.PropertyInformation;
-import com.example.urgenism.tenantscreening.List.PropertyList;
 import com.example.urgenism.tenantscreening.List.UserInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class MyInformationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -157,12 +147,12 @@ public class MyInformationActivity extends AppCompatActivity
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyB_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyA_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 

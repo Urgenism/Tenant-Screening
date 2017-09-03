@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -84,7 +83,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                    startActivity(new Intent(HomeActivity.this, SelectPropertyB_Activity.class));
+                    startActivity(new Intent(HomeActivity.this, SelectPropertyForDisplayingTenants_Activity.class));
                     overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
 
@@ -102,7 +101,7 @@ public class HomeActivity extends AppCompatActivity
         addtenantbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SelectPropertyA_Activity.class));
+                startActivity(new Intent(HomeActivity.this, SelectPropertyForAddingTenant_Activity.class));
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
@@ -188,12 +187,12 @@ public class HomeActivity extends AppCompatActivity
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyB_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyA_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 

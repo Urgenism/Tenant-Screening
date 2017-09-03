@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectPropertyA_Activity extends AppCompatActivity
+public class SelectPropertyForAddingTenant_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String PROPERTY_ID = "propertyID";
@@ -139,7 +139,7 @@ public class SelectPropertyA_Activity extends AppCompatActivity
                 }
 
                 //creating adapter
-                PropertyList artistAdapter = new PropertyList(SelectPropertyA_Activity.this, propertyList);
+                PropertyList artistAdapter = new PropertyList(SelectPropertyForAddingTenant_Activity.this, propertyList);
                 //attaching adapter to the listview
                 propertyListView.setAdapter(artistAdapter);
             }
@@ -209,12 +209,12 @@ public class SelectPropertyA_Activity extends AppCompatActivity
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyB_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyA_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 

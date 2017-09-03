@@ -257,12 +257,12 @@ public class PropertyListViewActivity extends AppCompatActivity
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyB_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyA_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 

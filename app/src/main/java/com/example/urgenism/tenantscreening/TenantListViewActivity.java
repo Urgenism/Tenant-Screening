@@ -77,7 +77,7 @@ public class TenantListViewActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Intent intent = getIntent();
-        String p_ID = intent.getStringExtra(SelectPropertyB_Activity.PROPERTY_ID);
+        String p_ID = intent.getStringExtra(SelectPropertyForDisplayingTenants_Activity.PROPERTY_ID);
 
         databaseProperty = FirebaseDatabase.getInstance().getReference("tenants").child(p_ID);
 
@@ -172,7 +172,7 @@ public class TenantListViewActivity extends AppCompatActivity
     public boolean deleteProperty(String t_id){
 
         Intent intent = getIntent();
-        String p_ID = intent.getStringExtra(SelectPropertyB_Activity.PROPERTY_ID);
+        String p_ID = intent.getStringExtra(SelectPropertyForDisplayingTenants_Activity.PROPERTY_ID);
         DatabaseReference dr = FirebaseDatabase.getInstance().getReference("tenants").child(p_ID).child(t_id);
         dr.removeValue();
 
@@ -272,12 +272,12 @@ public class TenantListViewActivity extends AppCompatActivity
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyB_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
-            startActivity(new Intent(getApplicationContext(), SelectPropertyA_Activity.class));
+            startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
             finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
