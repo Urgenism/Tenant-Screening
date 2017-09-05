@@ -177,28 +177,23 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_property) {
             startActivity(new Intent(getApplicationContext(), PropertyListViewActivity.class));
-            finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }
 
         else if (id == R.id.nav_addProperty) {
             startActivity(new Intent(getApplicationContext(), AddPropertyActivity.class));
-            finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_tenant) {
             startActivity(new Intent(getApplicationContext(), SelectPropertyForDisplayingTenants_Activity.class));
-            finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.nav_addTenant) {
             startActivity(new Intent(getApplicationContext(), SelectPropertyForAddingTenant_Activity.class));
-            finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.profile) {
             startActivity(new Intent(getApplicationContext(),MyInformationActivity.class));
-            finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (id == R.id.logout) {
