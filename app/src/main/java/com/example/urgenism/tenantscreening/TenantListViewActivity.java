@@ -50,6 +50,8 @@ public class TenantListViewActivity extends AppCompatActivity
     public static final String MARITAL_STATUS = "maritalStatus";
     public static final String MOVE_IN_DATE = "moveInDate";
     public static final String RENT_AMOUNT = "rentAmount";
+    public static final String TAX_RATE = "taxRate";
+    public static final String  TOTAL_AMOUNT = "totalAmount";
     public static final String NOTE = "note";
 
     DatabaseReference databaseProperty;
@@ -107,6 +109,8 @@ public class TenantListViewActivity extends AppCompatActivity
                 editor.putString("maritalStatus",tenantInfo.getMaritalStatus());
                 editor.putString("moveInDate",tenantInfo.getMoveInDate());
                 editor.putString("rentAmount",tenantInfo.getRentAmount());
+                editor.putString("taxRate",tenantInfo.getTaxRate());
+                editor.putString("totalAmount", tenantInfo.getTotalAmount());
                 editor.putString("note",tenantInfo.getNote());
                 editor.apply();
 
@@ -127,6 +131,8 @@ public class TenantListViewActivity extends AppCompatActivity
                 intent.putExtra(MARITAL_STATUS,tenantInfo.getMaritalStatus() );
                 intent.putExtra(MOVE_IN_DATE,tenantInfo.getMoveInDate() );
                 intent.putExtra(RENT_AMOUNT,tenantInfo.getRentAmount() );
+                intent.putExtra(TAX_RATE, tenantInfo.getTaxRate());
+                intent.putExtra(TOTAL_AMOUNT, tenantInfo.getTotalAmount());
                 intent.putExtra(NOTE,tenantInfo.getNote() );
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

@@ -84,7 +84,7 @@
     <string name="father_name">Father Name</string>
     <string name="sex_male_female">Sex-male/female</string>
     <string name="sex">Sex</string>
-    <string name="place_of_birth">Place of birth:</string>
+    <string name="place_of_birth">Place of birth</string>
     <string name="district">District</string>
     <string name="municipality">Municipality</string>
     <string name="ward_no">Ward No.</string>
@@ -99,6 +99,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="google_map_view_of_address">GOOGLE MAP VIEW</string>
+    <string name="tax_rate">Tax rate</string>
+    <string name="total_rent_amount">Total rent amount</string>
+    <string name="rental_details">Rental Details</string>
+    <string name="amount_in_rupees">Amount in rupees</string>
+    <string name="rate_in_percentage">Rate in percentage</string>
+    <string name="calulate_total_rent_amount">calulate total rent amount</string>
 
 
 </resources>

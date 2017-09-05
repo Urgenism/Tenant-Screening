@@ -169,6 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
 
@@ -299,24 +300,101 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
-
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rent_amount"
+                    android:text="@string/rental_details"
                     android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
                     android:textColor="#000"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    />
 
-                <EditText android:id="@+id/input_rentamount"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="@string/rent_amount" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rent_amount"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        />
+
+                    <EditText android:id="@+id/input_rentAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/amount_in_rupees"
+                     />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tax_rate"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        />
+
+                    <EditText android:id="@+id/input_taxRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/rate_in_percentage"/>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnCalculate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calulate_total_rent_amount"
+                    android:background="#0d47a1"
+                    android:textColor="#ffffff"
+                    android:padding="4dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_rent_amount"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        />
+
+                    <TextView android:id="@+id/input_totalRentAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

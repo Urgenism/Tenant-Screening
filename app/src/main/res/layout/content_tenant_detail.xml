@@ -175,6 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -182,11 +183,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/place_of_birth"
-                    android:gravity="center"
                     android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
                     android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    />
 
 
                 <LinearLayout
@@ -362,6 +363,22 @@
                     android:textColor="#000"
                     android:textSize="20sp" />
             </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rental_details"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -385,6 +402,55 @@
                     android:layout_height="wrap_content"
                     android:textColor="#000"
                     android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tax_rate"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    />
+
+                <TextView android:id="@+id/input_taxRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_rent_amount"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    />
+
+                <TextView android:id="@+id/input_totalRentAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="20sp"/>
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

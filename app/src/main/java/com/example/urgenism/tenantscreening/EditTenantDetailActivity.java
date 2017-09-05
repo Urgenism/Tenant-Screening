@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.urgenism.tenantscreening.List.TenantInformation;
@@ -37,8 +38,9 @@ public class EditTenantDetailActivity extends AppCompatActivity
 
 
     private EditText _tenantET, _emailET, _mobilenoET, _sex, _datOfBirth,_citizennoET, _zone, _district,
-            _municipality, _wardNo, _fatherName, _maritalStatus, _moveindateET, _rentamountET,
+            _municipality, _wardNo, _fatherName, _maritalStatus, _moveindateET, _rentamountET, taxRateET,
             _note;
+    private TextView totalAmount;
     private Button _donebtn;
 
     @Override
@@ -71,9 +73,11 @@ public class EditTenantDetailActivity extends AppCompatActivity
         _fatherName = (EditText) findViewById(R.id.input_fatherName);
         _maritalStatus = (EditText) findViewById(R.id.maritalStatus);
         _moveindateET = (EditText) findViewById(R.id.input_movein);
-        _rentamountET = (EditText) findViewById(R.id.input_rentamount);
+        _rentamountET = (EditText) findViewById(R.id.input_rentAmount);
+        taxRateET = (EditText) findViewById(R.id.input_taxRate);
         _note = (EditText) findViewById(R.id.input_note);
 
+        totalAmount = (TextView) findViewById(R.id.input_totalRentAmount);
         _donebtn = (Button) findViewById(R.id.done_btn);
 
         SharedPreferences sharedPreferences = getSharedPreferences("tenantInfo", Context.MODE_PRIVATE);
@@ -217,9 +221,9 @@ public class EditTenantDetailActivity extends AppCompatActivity
         DatabaseReference dr = FirebaseDatabase.getInstance().getReference("tenants")
                 .child(p_ID).child(t_ID);
 
-        TenantInformation tenant = new TenantInformation(t_ID, tenantName, email, mobile, sex,
+        TenantInformation tenant =new TenantInformation(t_ID, tenantName, email, mobile, sex,
                 DOB, citizenNo, zone, district, municipality, wardNo, fatherName, maritalStatus,
-                moveInDate, rentAmount, note);
+                moveInDate, rentAmount, taxRate, note);
         dr.setValue(tenant);
         Toast.makeText(getApplicationContext(), "tenant updated", Toast.LENGTH_LONG).show();
 

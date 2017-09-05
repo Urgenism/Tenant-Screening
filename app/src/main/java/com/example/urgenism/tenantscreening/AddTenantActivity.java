@@ -9,12 +9,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.urgenism.tenantscreening.List.TenantInformation;
@@ -28,10 +30,11 @@ public class AddTenantActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
 
-    private EditText _tenantET, _emailET, _mobilenoET, _sex, _datOfBirth,_citizennoET, _zone, _district,
-            _municipality, _wardNo, _fatherName, _maritalStatus, _moveindateET, _rentamountET,
+    private EditText _tenantET, _emailET, _mobileNoET, _sex, _datOfBirth,_citizennoET, _zone, _district,
+            _municipality, _wardNo, _fatherName, _maritalStatus, _moveindateET, _rentamountET, _taxRateET,
             _note;
-    private Button _donebtn;
+    private TextView  _totalRentAmount;
+    private Button _donebtn, _calculateBtn;
 
     DatabaseReference databaseTenant;
 
@@ -58,7 +61,7 @@ public class AddTenantActivity extends AppCompatActivity
         databaseTenant = FirebaseDatabase.getInstance().getReference("tenants");
         _tenantET = (EditText) findViewById(R.id.input_tenantName);
         _emailET = (EditText) findViewById(R.id.input_email);
-        _mobilenoET = (EditText) findViewById(R.id.input_mobile);
+        _mobileNoET = (EditText) findViewById(R.id.input_mobile);
         _sex = (EditText) findViewById(R.id.input_sex);
         _datOfBirth = (EditText) findViewById(R.id.input_dateOfBirth);
         _citizennoET = (EditText) findViewById(R.id.input_citizenNo);
@@ -69,11 +72,16 @@ public class AddTenantActivity extends AppCompatActivity
         _fatherName = (EditText) findViewById(R.id.input_fatherName);
         _maritalStatus = (EditText) findViewById(R.id.maritalStatus);
         _moveindateET = (EditText) findViewById(R.id.input_movein);
-        _rentamountET = (EditText) findViewById(R.id.input_rentamount);
+        _rentamountET = (EditText) findViewById(R.id.input_rentAmount);
+        _taxRateET = (EditText) findViewById(R.id.input_taxRate);
         _note = (EditText) findViewById(R.id.input_note);
+        
+        _totalRentAmount = (TextView) findViewById(R.id.input_totalRentAmount);
 
 
         _donebtn = (Button) findViewById(R.id.done_btn);
+        _calculateBtn = (Button) findViewById(R.id.btnCalculate);
+
 
         _datOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +133,24 @@ public class AddTenantActivity extends AppCompatActivity
             }
         });
 
+        _calculateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               if (valid())
+               {
+                   int rAmount = Integer.parseInt(_rentamountET.getText().toString());
+                   int tRate = Integer.parseInt(_taxRateET.getText().toString());
+
+                   int totalRA = rAmount+(tRate*rAmount)/100;
+
+                  _totalRentAmount.setText(String.valueOf(totalRA));
+               }
+
+
+
+            }
+        });
+
             _donebtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -137,13 +163,35 @@ public class AddTenantActivity extends AppCompatActivity
 
     }
 
+    public boolean valid()
+    {
+        boolean valid = true;
+        String rentAmount = _rentamountET.getText().toString().trim();
+        String taxRate = _taxRateET.getText().toString().trim();
+
+        if (rentAmount.isEmpty() || rentAmount.length() < 3 || rentAmount.length() > 7) {
+            _rentamountET.setError("Enter the valid rent amount");
+            valid = false;
+        } else {
+            _rentamountET.setError(null);
+        }
+
+        if (taxRate.isEmpty() || taxRate.length() < 2) {
+            _taxRateET.setError("Enter valid tax rate");
+            valid = false;
+        } else {
+            _taxRateET.setError(null);
+        }
+        return valid;
+    }
+
     public void register() {
 
         if (validate()) {
 
             String tenantName = _tenantET.getText().toString().trim();
             String email = _emailET.getText().toString().trim();
-            String mobile = _mobilenoET.getText().toString().trim();
+            String mobile = _mobileNoET.getText().toString().trim();
             String citizenNo = _citizennoET.getText().toString().trim();
             String sex = _sex.getText().toString().trim();
             String DOB = _datOfBirth.getText().toString().trim();
@@ -155,7 +203,9 @@ public class AddTenantActivity extends AppCompatActivity
             String maritalStatus =_maritalStatus.getText().toString().trim();
             String moveInDate = _moveindateET.getText().toString().trim();
             String rentAmount = _rentamountET.getText().toString().trim();
+            String taxRate = _taxRateET.getText().toString().trim();
             String note = _note.getText().toString().trim();
+            String totalAmount = _totalRentAmount.getText().toString().trim();
 
             Intent intent = getIntent();
             String p_ID = intent.getStringExtra(SelectPropertyForAddingTenant_Activity.PROPERTY_ID);
@@ -163,7 +213,7 @@ public class AddTenantActivity extends AppCompatActivity
             String tenantID = databaseTenant.push().getKey();
             TenantInformation tenant = new TenantInformation(tenantID, tenantName, email, mobile, sex,
                     DOB, citizenNo, zone, district, municipality, wardNo, fatherName, maritalStatus,
-                    moveInDate, rentAmount, note);
+                    moveInDate, rentAmount, taxRate, totalAmount, note);
             databaseTenant.child(p_ID).child(tenantID).setValue(tenant);
 
             Toast.makeText(this, "Successfully created new tenants!!", Toast.LENGTH_SHORT).show();
@@ -180,7 +230,7 @@ public class AddTenantActivity extends AppCompatActivity
 
         String tenantName = _tenantET.getText().toString().trim();
         String email = _emailET.getText().toString().trim();
-        String mobile = _mobilenoET.getText().toString().trim();
+        String mobile = _mobileNoET.getText().toString().trim();
         String citizenNo = _citizennoET.getText().toString().trim();
         String sex = _sex.getText().toString().trim();
         String DOB = _datOfBirth.getText().toString().trim();
@@ -192,6 +242,7 @@ public class AddTenantActivity extends AppCompatActivity
         String maritalStatus =_maritalStatus.getText().toString().trim();
         String moveInDate = _moveindateET.getText().toString().trim();
         String rentAmount = _rentamountET.getText().toString().trim();
+        String taxRate = _taxRateET.getText().toString().trim();
         String note = _note.getText().toString().trim();
 
 
@@ -211,10 +262,10 @@ public class AddTenantActivity extends AppCompatActivity
 
 
         if (mobile.isEmpty() || mobile.length() != 10) {
-            _mobilenoET.setError("Enter Valid Mobile Number");
+            _mobileNoET.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
-            _mobilenoET.setError(null);
+            _mobileNoET.setError(null);
         }
 
         if (citizenNo.isEmpty()) {
@@ -292,6 +343,13 @@ public class AddTenantActivity extends AppCompatActivity
             valid = false;
         } else {
             _rentamountET.setError(null);
+        }
+
+        if (taxRate.isEmpty() || taxRate.length() < 2) {
+            _taxRateET.setError("Enter valid tax rate");
+            valid = false;
+        } else {
+            _taxRateET.setError(null);
         }
 
         if (note.isEmpty() || note.length() < 5) {

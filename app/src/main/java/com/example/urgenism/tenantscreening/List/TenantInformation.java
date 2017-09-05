@@ -22,6 +22,8 @@ public class TenantInformation {
     private String maritalStatus;
     private String moveInDate;
     private String rentAmount;
+    private String taxRate;
+    private String totalAmount;
     private String note;
 
     public TenantInformation(){
@@ -33,7 +35,7 @@ public class TenantInformation {
                              String sex, String DOB, String citizenshipNo, String zone,
                              String district, String municipality, String wardNo,
                              String fatherName, String maritalStatus, String moveInDate,
-                              String rentAmount, String note) {
+                              String rentAmount, String taxRate, String totalAmount, String note) {
         this.tenantID = tenantID;
         this.tenantName = tenantName;
         this.email = email;
@@ -49,6 +51,8 @@ public class TenantInformation {
         this.maritalStatus = maritalStatus;
         this.moveInDate = moveInDate;
         this.rentAmount = rentAmount;
+        this.taxRate = taxRate;
+        this.totalAmount = totalAmount;
         this.note = note;
     }
 
@@ -179,6 +183,23 @@ public class TenantInformation {
     public void setMaritalStatus(String maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
+
+    public String getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(String taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public String getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(String totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
 
 
 
